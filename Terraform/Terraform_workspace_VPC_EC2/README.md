@@ -36,23 +36,29 @@ terraform-project/
 mkdir terraform-project
 cd terraform-project
 ```
-- Step 2: Create module folders
+- Step 2: Create module and workspace folders
 ```sh
 mkdir -p modules/vpc modules/subnet modules/ec2
+mkdir -p workspace/dev workspace/stage workspace/prod
 ```
 - Step 3: Create root files
 ```sh
 touch main.tf variables.tf outputs.tf provider.tf
 ```
-- Step 4: Create module files
+- Step 4: Create module files and tfvars files
 ```sh
 touch modules/vpc/{main.tf,variables.tf,outputs.tf} \
       modules/subnet/{main.tf,variables.tf,outputs.tf} \
       modules/ec2/{main.tf,variables.tf,outputs.tf}
-```
-Note: we will genrate ssh key pair and with that .pub keypair will launch instance,so to genrate key run below command,
+
+touch workspace/dev/dev.tfvars \
+      workspace/stage/stage.tfvars \
+      workspace/prod/prod.tfvars
+``` 
+- Step 5: Generate an SSH key pair
+  We will use this key pair for EC2 instances. The .pub key is uploaded to AWS.
 ```bash
-ssh-keygen -t rsa -b 2000 -f ~/.ssh/my-new-key -N "" -m PEM
+ssh-keygen -t rsa -b 2048 -f ~/.ssh/my-new-key -N "" -m PEM
 ```
 
 ### Root Configuration Files
@@ -510,16 +516,22 @@ terraform destroy -var-file=workspace/dev/dev.tfvars
 - Separate variable files for each environment.
 
 ### Connectivity Testing:
-1. connect to public instance, and run below command to check public instance has internet connectivity or not
+1. Test public instance internet access
    ```bash
    ping 0.0.0.0
    ```
-2. Now copy private ip of private instance, and in public instance run below command
+2. Test connectivity between instances
+From the public instance, ping the private instance:
 ```bash
 ping <private-ip of private instance>
 ```
-3. We can check internet connectivy for private instance through ssh .
+3. SSH into private instance via public instance
 ```bash
 ssh -i key-pair <username>@<private-ip>
 ```
-copy private key as we created above, past in key-pair file. and make sure it has read only access.
+Ensure the private key file has the correct permissions:
+```bash
+chmod 400 key-pair
+```
+
+y the private key generated earlier into a key-pair file, and ensure it has read-only permissi
