@@ -13,9 +13,9 @@ This Terraform project provisions a modular AWS infrastructure that includes:
 - SSH key pair for secure access
 
 The project follows modular design:
-- **vpc/** → Creates VPC
-- **subnet/** → Creates subnets, IGW, NAT GW, and routing
-- **ec2/** → Creates security group, key pair, and EC2 instances
+- **`vpc/`** → Creates VPC
+- **`subnet/`** → Creates subnets, IGW, NAT GW, and routing
+- **`ec2/`** → Creates security group, key pair, and EC2 instances
 
 
 ## 📂 Project Structure
@@ -41,7 +41,7 @@ terraform-aws-project/
         └── outputs.tf
 ```
 ### Root Module
-- **main.tf**
+- **`main.tf`**
 Calls all modules with required inputs:
 ```hcl
 module "vpc" {
@@ -69,21 +69,21 @@ module "ec2" {
 }
 ```
 
-- variables.tf
+- **`variables.tf`**
 ```hcl
 variable "region" {
   default = "us-east-1"
 }
 ```
 
-- provider.tf
+- **`provider.tf`**
 ```hcl
 provider "aws" {
   region = var.region
 }
 ```
 
-- outputs.tf
+- **`outputs.tf`**
 ```hcl
 output "vpc_id" {
   value = module.vpc.vpc_id
