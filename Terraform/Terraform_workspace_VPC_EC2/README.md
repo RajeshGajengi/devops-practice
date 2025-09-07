@@ -90,7 +90,7 @@ module "ec2" {
   key_pair = "~/.ssh/my-new-key"
 }
 ```
-**`varables.tf`**
+**`variables.tf`**
   - Defines default values: Region, VPC CIDR, Subnet CIDRs, Availability Zones, Instance type
 ```hcl
 variable "region" {
@@ -288,7 +288,7 @@ resource "aws_route_table_association" "private_rt_association" {
 
 ```
 
-**`varibale.tf`**
+**`variables.tf`**
 ```hcl
 
 variable "vpc_id" {
@@ -304,11 +304,11 @@ variable "private_subnet_cidr" {
 }
 
 variable "public_az" {
-  default = "Availabilty zone of public subnet"
+  description = "Availability zone of public subnet"
 }
 
 variable "private_az" {
-  description = "Availabilty zone of private subnet"
+  description = "Availability zone of private subnet"
 }
 
 ```
@@ -372,7 +372,7 @@ resource "aws_security_group" "vpc_sg" {
     to_port = 0
     protocol = -1
     cidr_blocks = ["0.0.0.0/0"]
-    description = "Allow all oubound traffic"
+    description = "Allow all outbound traffic"
   }
 
   tags = {
@@ -533,5 +533,3 @@ Ensure the private key file has the correct permissions:
 ```bash
 chmod 400 key-pair
 ```
-
-y the private key generated earlier into a key-pair file, and ensure it has read-only permissi
