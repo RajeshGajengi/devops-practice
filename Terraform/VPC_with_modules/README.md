@@ -401,5 +401,34 @@ output "private_ip" {
 }
 ```
 
+### Commands
+Step 1: Initialize Terraform
+```bash
+terraform init
+```
+Step 2: Validate configuration
+```bash
+terraform validate
+```
+Step 3: See execution plan
+```bash
+terraform plan
+```
+Step 4: Apply changes
+```bash
+terraform apply -auto-approve
+```
+Step 5: Destroy resources (when done)
+```bash
+terraform destroy -auto-approve
+```
 
+📤 Outputs (after terraform apply)
 
+- VPC ID
+- Public Subnet ID
+- Private Subnet ID
+- Internet Gateway ID
+- NAT Gateway ID
+- Public EC2 Instance IP
+- Private EC2 Instance IP
