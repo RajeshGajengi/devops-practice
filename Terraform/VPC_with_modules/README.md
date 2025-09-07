@@ -19,6 +19,7 @@ The project follows modular design:
 
 
 ## 📂 Project Structure
+```
 terraform-aws-project/
 ├── main.tf            # Root module calling VPC, Subnet, EC2 modules
 ├── variables.tf       # Global variables (region, etc.)
@@ -38,8 +39,7 @@ terraform-aws-project/
         ├── main.tf
         ├── variables.tf
         └── outputs.tf
-
-
+```
 ### Root Module
 - **main.tf**
 Calls all modules with required inputs:
