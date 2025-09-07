@@ -13,9 +13,9 @@ This Terraform project provisions a modular AWS infrastructure that includes:
 - SSH key pair for secure access
 
 The project follows modular design:
-- vpc/ → Creates VPC
-- subnet/ → Creates subnets, IGW, NAT GW, and routing
-- ec2/ → Creates security group, key pair, and EC2 instances
+- **vpc/** → Creates VPC
+- **subnet/** → Creates subnets, IGW, NAT GW, and routing
+- **ec2/** → Creates security group, key pair, and EC2 instances
 
 
 ## 📂 Project Structure
