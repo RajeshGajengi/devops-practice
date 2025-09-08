@@ -1,0 +1,6 @@
+vpc_cidr_block = "172.127.0.0/16"
+public_subnet_cidr = "172.127.0.0/20"
+public_az = "us-east-1e"
+private_subnet_cidr = "172.127.16.0/20"
+private_az = "us-east-1f"
+instance_type = "t2.medium"

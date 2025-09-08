@@ -1,0 +1,6 @@
+vpc_cidr_block = "123.10.0.0/16"
+public_subnet_cidr = "123.10.0.0/20"
+public_az = "us-east-1a"
+private_subnet_cidr = "123.10.16.0/20"
+private_az = "us-east-1b"
+instance_type = "t2.micro"
